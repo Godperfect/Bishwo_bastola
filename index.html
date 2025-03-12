@@ -3,182 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Profile Page</title>
-    <meta name="google-adsense-account" content="ca-pub-7662754673320412">
-    <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="inbox.css">
+    <link rel="stylesheet" href="style.css">
 
-        /* Body Styling */
-        body {
-            font-family: Arial, sans-serif;
-            color: white;
-            background: #000;
-            text-align: center;
-            overflow-y: auto; /* Enable vertical scrolling */
-        }
-
-        /* Animated Background */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: black;
-            z-index: -2;
-        }
-
-        /* Starry Animation */
-        .stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/stardust.png');
-            animation: moveStars 60s linear infinite;
-            z-index: -1;
-        }
-
-        @keyframes moveStars {
-            from {
-                background-position: 0 0;
-            }
-            to {
-                background-position: 10000px 10000px;
-            }
-        }
-
-        /* Profile Section */
-        .profile-container {
-            margin-top: 50px;
-        }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: url('img/bishwo.jpg') no-repeat center/cover;
-            margin: 0 auto 10px;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-
-        h1 {
-            font-size: 1.8rem;
-            margin: 10px 0;
-            font-family: "Georgia", serif;
-            color: rgba(255, 255, 255, 0.8);
-            font-style: italic;
-        }
-
-        .info {
-            font-size: 1rem;
-            margin: 10px;
-        }
-
-        /* Buttons */
-        .button {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            width: 300px;
-            margin: 15px auto;
-            padding: 12px 20px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 2px solid transparent;
-            border-radius: 30px;
-            text-decoration: none;
-            color: white;
-            font-size: 1.2rem;
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
-        }
-
-        .button:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.5);
-            transform: scale(1.05);
-        }
-
-        .button img {
-            width: 30px;
-            height: 30px;
-            margin-right: 10px;
-        }
-
-        .portfolio-text {
-            color: #8e9bff; /* Light purple text */
-            font-weight: bold;
-        }
-
-        /* Iframe Styling */
-        .iframe-container {
-            margin: 30px auto;
-            width: 80%;
-        }
-
-        iframe {
-            width: 100%;
-            height: 205px;
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-
-        /* Search Box Styling */
-        .search-container {
-            margin: 30px auto;
-            width: 80%;
-        }
-
-        input[type="text"] {
-            width: 70%;
-            padding: 10px;
-            border: 2px solid white;
-            border-radius: 5px;
-            font-size: 1rem;
-            color: #000;
-        }
-
-        input::placeholder {
-            color: #888;
-            font-style: italic;
-        }
-    </style>
 </head>
 <body>
-    <!-- Background Animation -->
     <div class="stars"></div>
-
-    <!-- Profile Section -->
     <div class="profile-container">
         <div class="profile-img"></div>
-        <h1>Bishwo Bastola</h1>
-        <p class="info">Hey, I'm Bishwo Bastola. Check out my projects.</p>
+        <h1>Mr Perfect</h1>
+        <p class="info">Hey, I'm Mr Perfect. Check out my projects.</p>
     </div>
-
     <!-- Buttons -->
     <a href="#" class="button">
         <img src="https://img.icons8.com/fluency/48/portfolio.png" alt="Portfolio Icon">
         <span class="portfolio-text">Portfolio</span>
     </a>
-
     <a href="#" class="button">
         <img src="https://img.icons8.com/ios-glyphs/30/github.png" alt="GitHub Icon">
         <span>GitHub</span>
     </a>
-
     <a href="#" class="button">
         <img src="https://img.icons8.com/color/48/project.png" alt="Projects Icon">
         <span>Projects</span>
     </a>
-
     <!-- YouTube Iframe -->
     <div class="iframe-container">
         <iframe 
@@ -188,29 +39,72 @@
             allowfullscreen>
         </iframe>
     </div>
-
-    <!-- Search Box -->
-    <div class="search-container">
-        <input 
-            type="text" 
-            id="video-url" 
-            placeholder="Paste a YouTube, Facebook, TikTok, or Instagram link and press Enter" 
-            onkeypress="handleKeyPress(event)">
+    
+    <!-- Inbox Popup Card -->
+    <div class="inbox-card" id="inbox-popup">
+        <div class="inbox">
+            <div class="inbox-info">
+                <div class="inbox-content">
+                    <p class="title">Contact Me</p>
+                    <form action="https://formspree.io/f/xjkyvpky" method="POST" class="contact-form" id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Your name:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your email:</label>
+                            <input type="email" id="email" name="email" required>
+                            <small class="email-error">Please use a legitimate email address</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your message:</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <span>Send</span>
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
+    <!-- Music Popup Card -->
+    <div class="popup-card" id="music-popup">
+        <div class="card">
+            <h2>Music Search</h2>
+            <!-- Music Search Box -->
+            <div class="music-search-container">
+                <input 
+                    type="text" 
+                    id="music-search" 
+                    placeholder="Search for songs, artists, or albums..." 
+                    autocomplete="off">
+            </div>
+            <button class="search-button">
+                <i class="fa-solid fa-search"></i> Search
+            </button>
+            <!-- Results Container -->
+            <div class="music-results">
+                <!-- Results will be populated by YouTube API -->
+            </div>
+        </div>
+    </div>
+    <!-- Floating Footer Bar -->
+    <footer class="floating-footer">
+        <button class="footer-button inbox-button">
+            <i class="fa-solid fa-inbox"></i>
+        </button>
+        <button class="footer-button music-button">
+            <i class="fa-solid fa-music"></i> <!-- Music button -->
+        </button>
+        <button class="footer-button home-button" style="display: none;">
+            <i class="fa-solid fa-house"></i> <!-- Home button -->
+        </button>
+        <button class="footer-button ai-button">
+            <i class="fa-solid fa-robot"></i> <!-- AI button -->
+        </button>
+    </footer>
 
-    <script>
-        function handleKeyPress(event) {
-            if (event.key === 'Enter') {
-                const url = event.target.value;
-                if (!url) {
-                    alert('Please enter a valid video URL.');
-                    return;
-                }
-
-                // Redirect to backend with the video URL
-                window.location.href = `/download?url=${encodeURIComponent(url)}`;
-            }
-        }
-    </script>
-</body>
-</html>
+    <script src="script.js"></script>
+    <script src="inbox.js"></script>

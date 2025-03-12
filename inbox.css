@@ -1,0 +1,348 @@
+/* Inbox Card Styling */
+.inbox-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  display: none;
+}
+
+.inbox-card.active {
+  display: block;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -60%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+.inbox {
+  --background: linear-gradient(to right, #13b37f 0%, #11a3c8 100%);
+  width: 350px;
+  height: 520px;
+  padding: 0.9px;
+  border-radius: 0.7rem;
+  overflow: visible;
+  background: #f7ba2b;
+  background: var(--background);
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.inbox::after {
+  position: absolute;
+  content: "";
+  top: -22px;
+  left: 0px;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  transform: scale(0.76);
+  filter: blur(34.5px);
+  background: #f7ba2b;
+  background: var(--background);
+  transition: opacity 0.5s;
+}
+
+.inbox-info {
+  --color: #1f1a1d;
+  background: var(--color);
+  color: var(--color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  border-radius: 0.7rem;
+  padding: 20px;
+}
+
+.inbox-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inbox-info .title {
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: #f7f7f7;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Contact Form Styling */
+.contact-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+}
+
+.form-group label {
+  color: #f7f7f7;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.form-group input {
+  height: 40px;
+}
+
+.form-group textarea {
+  height: 120px;
+  resize: none;
+}
+
+.email-error {
+  display: none;
+  color: #ff6b6b;
+  font-size: 0.75rem;
+  margin-top: 4px;
+  letter-spacing: 0.03em;
+}
+
+.form-group input.error {
+  border-color: #ff6b6b;
+}
+
+.form-group input.error + .email-error {
+  display: block;
+  animation: shakeError 0.6s;
+}
+
+@keyframes shakeError {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #f7ba2b;
+  box-shadow: 0 0 8px rgba(247, 186, 43, 0.5);
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.submit-btn {
+  background: linear-gradient(to right, #f7ba2b, #13b37f);
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  align-self: center;
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn:active {
+  transform: translateY(-1px);
+}
+
+.submit-btn i {
+  transition: transform 0.3s ease;
+}
+
+.submit-btn:hover i {
+  transform: translateX(5px);
+}
+
+/* Input/Textarea Animation */
+.form-group input,
+.form-group textarea {
+  animation: formItemAppear 0.6s ease-out forwards;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.form-group:nth-child(1) input {
+  animation-delay: 0.1s;
+}
+
+.form-group:nth-child(2) input {
+  animation-delay: 0.2s;
+}
+
+.form-group:nth-child(3) textarea {
+  animation-delay: 0.3s;
+}
+
+.submit-btn {
+  animation: formItemAppear 0.6s ease-out forwards;
+  animation-delay: 0.4s;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+@keyframes formItemAppear {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*Hover Effects*/
+.inbox:hover::after {
+  opacity: 0.6;
+  padding: 0.7rem 0;
+  top: 18px;
+  transition: 0.6s;
+}
+
+.inbox:hover {
+  transform: translateY(-5px);
+}
+
+/* Floating stars animation */
+.floating-stars {
+  position: absolute;
+  pointer-events: none;
+  animation: float 3s forwards;
+  opacity: 1;
+  z-index: 9999;
+  font-size: 20px;
+  color: #f7ba2b;
+  text-shadow: 0 0 5px rgba(247, 186, 43, 0.7);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* NEW SEQUENTIAL FORM ANIMATION STYLES */
+
+/* Input Arrow Styling */
+.input-arrow {
+  position: absolute;
+  right: 12px;
+  top: 40px; /* Position below the label */
+  color: #666;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.form-group:nth-child(3) .input-arrow {
+  top: 40px; /* Adjust for textarea */
+}
+
+.input-arrow.active {
+  opacity: 0.9;
+  color: #f7ba2b;
+  animation: pulseArrow 1.5s infinite;
+}
+
+.input-arrow.complete {
+  opacity: 1;
+  color: #13b37f;
+  animation: none;
+  transform: scale(1.2);
+}
+
+@keyframes pulseArrow {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Add padding for arrow */
+.form-group input,
+.form-group textarea {
+  padding-right: 35px;
+}
+
+/* Form group animations */
+.form-group.animate-in {
+  animation: slideInFromBottom 0.6s forwards;
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Submit button animation */
+.submit-btn.animate-in {
+  animation: fadeInButton 0.4s forwards;
+}
+
+@keyframes fadeInButton {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Error state pulse animation */
+.form-group input.error {
+  animation: errorPulse 1s;
+}
+
+@keyframes errorPulse {
+  0%, 100% { border-color: #ff6b6b; }
+  50% { border-color: #ff2b2b; }
+}
